@@ -1,5 +1,29 @@
 // GND Studios — Tasteful Minimalist Motion, Scroll Parallax & Micro-Interactions
+window.addEventListener('load', () => {
+  window.scrollTo(0, 0);
+});
+
 document.addEventListener('DOMContentLoaded', () => {
+  window.scrollTo(0, 0);
+
+  // Smooth in-page navigation without leaving stale #hashes in the URL
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', e => {
+      const id = anchor.getAttribute('href').slice(1);
+      if (!id) return;
+      if (id === 'top') {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+      }
+      const target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const scrollLine = document.getElementById('scrollLine');
   const siteNav = document.getElementById('siteNav');
