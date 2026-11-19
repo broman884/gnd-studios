@@ -18,7 +18,7 @@
   <!-- Minimal Sticky Navbar -->
   <header id="siteNav" class="site-nav">
     <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-      <a href="#top" class="text-sm font-semibold tracking-tight text-zinc-100">
+      <a href="#top" class="text-sm font-semibold tracking-tight text-zinc-100 hover:text-white transition-colors">
         GND Studios
       </a>
 
@@ -43,33 +43,34 @@
   <main id="top" class="max-w-5xl mx-auto px-6">
     <!-- EDITORIAL HERO -->
     <section class="pt-24 pb-24 sm:pt-32 sm:pb-32">
-      <div data-reveal class="font-mono-label text-xs uppercase tracking-[0.18em] text-zinc-500 mb-6">
+      <div data-reveal class="font-mono-label text-xs uppercase tracking-[0.18em] text-zinc-500 mb-6 flex items-center">
+        <span class="studio-dot" aria-hidden="true"></span>
         GND Studios — Chennai, India
       </div>
 
-      <h1 data-reveal data-delay="70" class="text-4xl sm:text-6xl font-medium tracking-tight text-zinc-100 leading-[1.08] max-w-3xl mb-7">
-        Native Android apps, built with <span class="font-editorial italic font-normal text-white">clarity</span> and restraint.
+      <h1 data-reveal data-delay="80" class="text-4xl sm:text-6xl font-medium tracking-tight text-zinc-100 leading-[1.08] max-w-3xl mb-7">
+        Native Android apps, built with <span class="font-editorial italic font-normal text-white hero-word-underline">clarity</span> and restraint.
       </h1>
 
-      <p data-reveal data-delay="130" class="text-base sm:text-lg text-zinc-400 max-w-xl leading-relaxed mb-10">
+      <p data-reveal data-delay="150" class="text-base sm:text-lg text-zinc-400 max-w-xl leading-relaxed mb-10">
         We are an independent studio crafting practical mobile software, on-device AI tools, and interactive games from The New College, Chennai.
       </p>
 
-      <div data-reveal data-delay="180" class="flex flex-wrap items-center gap-3">
-        <a href="#apps" class="btn-solid">Explore apps</a>
-        <a href="mailto:gndstudious@gmail.com" class="btn-outline">gndstudious@gmail.com</a>
+      <div data-reveal data-delay="210" class="flex flex-wrap items-center gap-3">
+        <a href="#apps" class="btn-solid magnetic">Explore apps</a>
+        <a href="mailto:gndstudious@gmail.com" class="btn-outline magnetic">gndstudious@gmail.com</a>
       </div>
     </section>
 
     <!-- APPS SECTION -->
-    <section id="apps" class="border-t border-zinc-800/80 py-20 sm:py-28">
+    <section id="apps" class="hairline py-20 sm:py-28">
       <div data-reveal class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4 mb-16">
         <h2 class="text-2xl sm:text-3xl font-medium tracking-tight text-zinc-100">Selected Apps</h2>
         <span class="font-mono-label text-xs text-zinc-500">03 NATIVE ANDROID RELEASES</span>
       </div>
 
       <!-- 01 / PULSE -->
-      <article data-reveal class="py-14 border-t border-zinc-900 grid md:grid-cols-12 gap-12 items-center">
+      <article data-reveal class="hairline py-14 grid md:grid-cols-12 gap-12 items-center">
         <div class="md:col-span-7 space-y-6">
           <div class="font-mono-label text-xs text-zinc-500">01 / PULSE</div>
           <div>
@@ -83,16 +84,16 @@
             Aggregates live student opportunities from Unstop, Devpost, MLH, Internshala, Remotive, Arbeitnow, and government portals. Parses PDF resumes 100% on-device to match your skills without uploading personal data.
           </p>
 
-          <ul class="space-y-2.5 text-sm text-zinc-300 border-t border-zinc-800/70 pt-5">
-            <li class="flex items-baseline justify-between gap-4">
+          <ul class="space-y-1 text-sm text-zinc-300 border-t border-zinc-800/70 pt-4">
+            <li class="spec-row flex items-baseline justify-between gap-4">
               <span class="text-zinc-500 font-mono-label text-xs">PARSER</span>
               <span class="text-right">160+ skills extracted locally via PDFBox-Android</span>
             </li>
-            <li class="flex items-baseline justify-between gap-4">
+            <li class="spec-row flex items-baseline justify-between gap-4">
               <span class="text-zinc-500 font-mono-label text-xs">MATCHING</span>
               <span class="text-right">Swipe deck, readiness score &amp; skill-gap guidance</span>
             </li>
-            <li class="flex items-baseline justify-between gap-4">
+            <li class="spec-row flex items-baseline justify-between gap-4">
               <span class="text-zinc-500 font-mono-label text-xs">WORKFLOW</span>
               <span class="text-right">Built-in CV builder &amp; application status tracker</span>
             </li>
@@ -104,33 +105,43 @@
         </div>
 
         <div class="md:col-span-5" data-gallery>
-          <div class="device-shell">
-            <div class="device-screen" data-zoomable title="Click to view full screen">
-              <img data-gallery-img src="assets/pulse-discover.jpg" alt="Pulse Discover Feed" />
+          <div class="device-parallax">
+            <div class="device-shell">
+              <div class="device-screen" data-zoomable title="Click to view full screen">
+                <img data-gallery-img src="assets/pulse-discover.jpg" alt="Pulse Discover Feed" />
+              </div>
             </div>
           </div>
-          <div class="flex items-center justify-center gap-5 mt-5">
-            <button type="button" class="screen-tab active" data-shot="assets/pulse-discover.jpg" data-label="Pulse Discover Feed">Discover</button>
-            <button type="button" class="screen-tab" data-shot="assets/pulse-assistant.jpg" data-label="Pulse Career Assistant">Assistant</button>
-            <button type="button" class="screen-tab" data-shot="assets/pulse-splash.jpg" data-label="Pulse Launch">Launch</button>
+          <div class="flex justify-center mt-5">
+            <div class="tab-bar inline-flex items-center gap-5">
+              <button type="button" class="screen-tab active" data-shot="assets/pulse-discover.jpg" data-label="Pulse Discover Feed">Discover</button>
+              <button type="button" class="screen-tab" data-shot="assets/pulse-assistant.jpg" data-label="Pulse Career Assistant">Assistant</button>
+              <button type="button" class="screen-tab" data-shot="assets/pulse-splash.jpg" data-label="Pulse Launch">Launch</button>
+              <span class="tab-indicator" aria-hidden="true"></span>
+            </div>
           </div>
         </div>
       </article>
 
       <!-- 02 / CANCELIT -->
-      <article data-reveal class="py-14 border-t border-zinc-800/80 grid md:grid-cols-12 gap-12 items-center">
+      <article data-reveal class="hairline py-14 grid md:grid-cols-12 gap-12 items-center">
         <div class="md:col-span-5 order-2 md:order-1" data-gallery>
-          <div class="device-shell">
-            <div class="device-screen" data-zoomable title="Click to view full screen">
-              <img data-gallery-img src="assets/cancelit-focus.jpg" alt="CancelIt Focus Timer" />
+          <div class="device-parallax">
+            <div class="device-shell">
+              <div class="device-screen" data-zoomable title="Click to view full screen">
+                <img data-gallery-img src="assets/cancelit-focus.jpg" alt="CancelIt Focus Timer" />
+              </div>
             </div>
           </div>
-          <div class="flex flex-wrap items-center justify-center gap-4 mt-5">
-            <button type="button" class="screen-tab active" data-shot="assets/cancelit-focus.jpg" data-label="CancelIt Focus Timer">Focus</button>
-            <button type="button" class="screen-tab" data-shot="assets/cancelit-blocklist.jpg" data-label="CancelIt Blocklist">Blocklist</button>
-            <button type="button" class="screen-tab" data-shot="assets/cancelit-study.jpg" data-label="CancelIt Study Mode">Study</button>
-            <button type="button" class="screen-tab" data-shot="assets/cancelit-coach.jpg" data-label="CancelIt Habit Coach">Coach</button>
-            <button type="button" class="screen-tab" data-shot="assets/cancelit-splash.jpg" data-label="CancelIt Splash">Splash</button>
+          <div class="flex justify-center mt-5">
+            <div class="tab-bar inline-flex flex-wrap items-center justify-center gap-4">
+              <button type="button" class="screen-tab active" data-shot="assets/cancelit-focus.jpg" data-label="CancelIt Focus Timer">Focus</button>
+              <button type="button" class="screen-tab" data-shot="assets/cancelit-blocklist.jpg" data-label="CancelIt Blocklist">Blocklist</button>
+              <button type="button" class="screen-tab" data-shot="assets/cancelit-study.jpg" data-label="CancelIt Study Mode">Study</button>
+              <button type="button" class="screen-tab" data-shot="assets/cancelit-coach.jpg" data-label="CancelIt Habit Coach">Coach</button>
+              <button type="button" class="screen-tab" data-shot="assets/cancelit-splash.jpg" data-label="CancelIt Splash">Splash</button>
+              <span class="tab-indicator" aria-hidden="true"></span>
+            </div>
           </div>
         </div>
 
@@ -147,16 +158,16 @@
             An Android focus tool that enforces per-app timers, cooldown locks, and regex keyword blocking — paired with an AI Study Mode that checks whether you're staying on topic and a habit coach backed by your local usage report.
           </p>
 
-          <ul class="space-y-2.5 text-sm text-zinc-300 border-t border-zinc-800/70 pt-5">
-            <li class="flex items-baseline justify-between gap-4">
+          <ul class="space-y-1 text-sm text-zinc-300 border-t border-zinc-800/70 pt-4">
+            <li class="spec-row flex items-baseline justify-between gap-4">
               <span class="text-zinc-500 font-mono-label text-xs">BLOCKING</span>
               <span class="text-right">Accessibility app locks &amp; regex keyword filters</span>
             </li>
-            <li class="flex items-baseline justify-between gap-4">
+            <li class="spec-row flex items-baseline justify-between gap-4">
               <span class="text-zinc-500 font-mono-label text-xs">STUDY MODE</span>
               <span class="text-right">Gemini topic checks &amp; 10-min focus check-ins</span>
             </li>
-            <li class="flex items-baseline justify-between gap-4">
+            <li class="spec-row flex items-baseline justify-between gap-4">
               <span class="text-zinc-500 font-mono-label text-xs">COACH</span>
               <span class="text-right">AI habit coach &amp; PIN-protected focus rules</span>
             </li>
@@ -169,7 +180,7 @@
       </article>
 
       <!-- 03 / THE NEW COLLEGE DAY-ORDER APP -->
-      <article data-reveal class="py-14 border-t border-zinc-800/80 grid md:grid-cols-12 gap-12 items-center">
+      <article data-reveal class="hairline py-14 grid md:grid-cols-12 gap-12 items-center">
         <div class="md:col-span-7 space-y-6">
           <div class="font-mono-label text-xs text-zinc-500">03 / DAY-ORDER APP (V3)</div>
           <div>
@@ -189,30 +200,32 @@
         </div>
 
         <div class="md:col-span-5">
-          <div class="device-shell">
-            <div class="device-screen !cursor-default p-5 flex flex-col justify-between bg-[#0e0e11]">
-              <div>
-                <div class="font-mono-label text-[10px] uppercase tracking-widest text-zinc-500 mb-1">The New College</div>
-                <div id="dayOrderTitle" class="text-xl font-medium text-zinc-100 mb-5">Day Order 1</div>
-                <div id="dayOrderSlots"></div>
+          <div class="device-parallax">
+            <div class="device-shell">
+              <div class="device-screen !cursor-default p-5 flex flex-col justify-between bg-[#0e0e11]">
+                <div>
+                  <div class="font-mono-label text-[10px] uppercase tracking-widest text-zinc-500 mb-1">The New College</div>
+                  <div id="dayOrderTitle" class="text-xl font-medium text-zinc-100 mb-5">Day Order 1</div>
+                  <div id="dayOrderSlots"></div>
+                </div>
+                <button id="nextDayOrderBtn" type="button" class="mt-4 w-full py-2.5 rounded-full bg-zinc-100 text-zinc-950 text-xs font-medium hover:bg-zinc-200 transition-colors cursor-pointer">
+                  Next day order →
+                </button>
               </div>
-              <button id="nextDayOrderBtn" type="button" class="mt-4 w-full py-2.5 rounded-full bg-zinc-100 text-zinc-950 text-xs font-medium hover:bg-zinc-200 transition-colors">
-                Next day order →
-              </button>
             </div>
           </div>
         </div>
       </article>
 
       <!-- Quiet note on Studio Games & Tools -->
-      <div data-reveal class="pt-10 border-t border-zinc-900 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-zinc-500">
+      <div data-reveal class="hairline pt-10 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-zinc-500">
         <span>Also at GND Studios: Godot 3D/HD-2D games, custom shaders, and Roblox Studio AI plugins.</span>
         <span class="font-mono-label">St. Joseph's College Hackathon Winners</span>
       </div>
     </section>
 
     <!-- FOUNDERS SECTION -->
-    <section id="founders" class="border-t border-zinc-800/80 py-20 sm:py-28">
+    <section id="founders" class="hairline py-20 sm:py-28">
       <div data-reveal class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4 mb-16">
         <h2 class="text-2xl sm:text-3xl font-medium tracking-tight text-zinc-100">Founders</h2>
         <span class="font-mono-label text-xs text-zinc-500">THE TEAM IN CHENNAI</span>
@@ -220,7 +233,7 @@
 
       <div class="grid md:grid-cols-3 gap-10">
         <!-- Irfan Ahmed -->
-        <div data-reveal data-delay="0" class="border-t border-zinc-800 pt-6 flex flex-col justify-between">
+        <div data-reveal data-delay="0" class="founder-card border-t border-zinc-800 pt-6 flex flex-col justify-between">
           <div>
             <div class="font-mono-label text-xs text-zinc-500 mb-2">CO-FOUNDER</div>
             <h3 class="text-lg font-medium text-zinc-100">Irfan Ahmed</h3>
@@ -230,13 +243,13 @@
             </p>
           </div>
           <div class="flex items-center gap-4 text-xs text-zinc-400">
-            <a href="https://www.linkedin.com/in/irfan-ahmed-a3b9b2438/" target="_blank" rel="noopener" class="hover:text-white transition-colors">LinkedIn ↗</a>
-            <a href="https://github.com/broman884" target="_blank" rel="noopener" class="hover:text-white transition-colors">GitHub ↗</a>
+            <a href="https://www.linkedin.com/in/irfan-ahmed-a3b9b2438/" target="_blank" rel="noopener" class="ext-link hover:text-white">LinkedIn <span class="arrow">↗</span></a>
+            <a href="https://github.com/broman884" target="_blank" rel="noopener" class="ext-link hover:text-white">GitHub <span class="arrow">↗</span></a>
           </div>
         </div>
 
         <!-- Mohammed Ibrahim -->
-        <div data-reveal data-delay="80" class="border-t border-zinc-800 pt-6 flex flex-col justify-between">
+        <div data-reveal data-delay="90" class="founder-card border-t border-zinc-800 pt-6 flex flex-col justify-between">
           <div>
             <div class="font-mono-label text-xs text-zinc-500 mb-2">CO-FOUNDER</div>
             <h3 class="text-lg font-medium text-zinc-100">Mohammed Ibrahim</h3>
@@ -246,13 +259,13 @@
             </p>
           </div>
           <div class="flex items-center gap-4 text-xs text-zinc-400">
-            <a href="https://www.linkedin.com/in/muhammad-ibrahim-1a3bb5382/" target="_blank" rel="noopener" class="hover:text-white transition-colors">LinkedIn ↗</a>
-            <a href="https://github.com/HyYokudev" target="_blank" rel="noopener" class="hover:text-white transition-colors">GitHub ↗</a>
+            <a href="https://www.linkedin.com/in/muhammad-ibrahim-1a3bb5382/" target="_blank" rel="noopener" class="ext-link hover:text-white">LinkedIn <span class="arrow">↗</span></a>
+            <a href="https://github.com/HyYokudev" target="_blank" rel="noopener" class="ext-link hover:text-white">GitHub <span class="arrow">↗</span></a>
           </div>
         </div>
 
         <!-- Mohammed Momin Sufiyan -->
-        <div data-reveal data-delay="160" class="border-t border-zinc-800 pt-6 flex flex-col justify-between">
+        <div data-reveal data-delay="180" class="founder-card border-t border-zinc-800 pt-6 flex flex-col justify-between">
           <div>
             <div class="font-mono-label text-xs text-zinc-500 mb-2">CO-FOUNDER</div>
             <h3 class="text-lg font-medium text-zinc-100">Mohammed Momin Sufiyan</h3>
@@ -262,14 +275,14 @@
             </p>
           </div>
           <div class="flex items-center gap-4 text-xs text-zinc-400">
-            <a href="mailto:gndstudious@gmail.com" class="hover:text-white transition-colors">Email ↗</a>
+            <a href="mailto:gndstudious@gmail.com" class="ext-link hover:text-white">Email <span class="arrow">↗</span></a>
           </div>
         </div>
       </div>
     </section>
 
     <!-- CONTACT SECTION -->
-    <section id="contact" class="border-t border-zinc-800/80 py-20 sm:py-28">
+    <section id="contact" class="hairline py-20 sm:py-28">
       <div class="grid md:grid-cols-12 gap-14">
         <div data-reveal class="md:col-span-6 space-y-8">
           <div>
@@ -289,7 +302,7 @@
                 <a href="mailto:gndstudious@gmail.com" class="text-lg sm:text-xl font-medium text-zinc-100 hover:text-zinc-300 transition-colors">
                   gndstudious@gmail.com
                 </a>
-                <button type="button" data-copy-email class="font-mono-label text-[11px] text-zinc-400 hover:text-white border border-zinc-800 px-2.5 py-1 rounded-full transition-colors">
+                <button type="button" data-copy-email class="font-mono-label text-[11px] text-zinc-400 hover:text-white border border-zinc-800 px-2.5 py-1 rounded-full transition-colors cursor-pointer">
                   Copy
                 </button>
               </div>
@@ -298,7 +311,7 @@
             <div class="pt-2">
               <div class="font-mono-label text-[11px] text-zinc-500 mb-1">LOCATION</div>
               <div class="text-zinc-300">Chennai, Tamil Nadu, India</div>
-              <div class="text-xs text-zinc-500 mt-0.5">The New College · IST (UTC+5:30)</div>
+              <div id="istClock" class="text-xs text-zinc-500 mt-0.5 font-mono-label">The New College · IST (UTC+5:30)</div>
             </div>
           </div>
         </div>
@@ -315,7 +328,7 @@
               <textarea id="cfMessage" rows="3" required placeholder="Tell us about your project or feedback..." class="line-input resize-none"></textarea>
             </div>
             <div class="pt-2">
-              <button type="submit" class="btn-solid">Send message</button>
+              <button type="submit" class="btn-solid magnetic">Send message</button>
             </div>
           </form>
         </div>
@@ -324,8 +337,8 @@
   </main>
 
   <!-- Minimal Footer -->
-  <footer class="border-t border-zinc-900 py-10">
-    <div class="max-w-5xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500">
+  <footer class="hairline py-10 max-w-5xl mx-auto px-6">
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500">
       <div>© 2026 GND Studios · Chennai, India</div>
       <div class="flex items-center gap-6">
         <a href="#apps" class="hover:text-zinc-200 transition-colors">Apps</a>
@@ -337,7 +350,7 @@
 
   <!-- Lightbox -->
   <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot Preview">
-    <button id="lightboxClose" type="button" class="fixed top-6 right-6 font-mono-label text-xs text-zinc-300 border border-zinc-700 px-3 py-1.5 rounded-full hover:text-white" aria-label="Close">
+    <button id="lightboxClose" type="button" class="fixed top-6 right-6 font-mono-label text-xs text-zinc-300 border border-zinc-700 px-3 py-1.5 rounded-full hover:text-white cursor-pointer" aria-label="Close">
       ESC
     </button>
     <img id="lightboxImg" src="" alt="App screenshot preview" />

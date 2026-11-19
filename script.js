@@ -1,14 +1,17 @@
-// GND Studios — Minimalist Scroll Actions, Screenshot Switchers & Interactions
+// GND Studios — Tasteful Minimalist Motion, Scroll Parallax & Micro-Interactions
 document.addEventListener('DOMContentLoaded', () => {
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const scrollLine = document.getElementById('scrollLine');
   const siteNav = document.getElementById('siteNav');
   const navLinks = document.querySelectorAll('.nav-link[data-section]');
+  const parallaxDevices = document.querySelectorAll('.device-parallax');
   const sections = ['apps', 'founders', 'contact']
     .map(id => document.getElementById(id))
     .filter(Boolean);
 
-  // 1. Crisp 1px Scroll Progress + Navbar Border + Active Section Highlight
-  const onScroll = () => {
+  // 1. Scroll Progress, Navbar Border, Active Tab & Gentle Device Parallax
+  let ticking = false;
+  const updateOnScroll = () => {
     const y = window.scrollY;
     const max = document.documentElement.scrollHeight - window.innerHeight;
     if (scrollLine) {
@@ -25,10 +28,27 @@ document.addEventListener('DOMContentLoaded', () => {
     navLinks.forEach(link => {
       link.classList.toggle('active', link.dataset.section === current);
     });
+
+    // Subtle scroll-linked parallax on phone mockups (±14px max)
+    if (!prefersReduced) {
+      const vh = window.innerHeight;
+      parallaxDevices.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        const progress = (rect.top + rect.height / 2 - vh / 2) / vh; // -1 to 1
+        const offset = Math.max(-16, Math.min(16, progress * 18));
+        el.style.transform = `translate3d(0, ${offset.toFixed(1)}px, 0)`;
+      });
+    }
+    ticking = false;
   };
 
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(updateOnScroll);
+      ticking = true;
+    }
+  }, { passive: true });
+  updateOnScroll();
 
   // 2. Smooth Scroll-Triggered Reveals
   const revealObserver = new IntersectionObserver(
@@ -41,32 +61,82 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
     },
-    { threshold: 0.12, rootMargin: '0px 0px -30px 0px' }
+    { threshold: 0.1, rootMargin: '0px 0px -30px 0px' }
   );
   document.querySelectorAll('[data-reveal]').forEach(el => revealObserver.observe(el));
 
-  // 3. Minimal Screenshot Switcher (Pulse & CancelIt)
+  // 3. Animated Hairline Dividers (draw left -> right on scroll)
+  const lineObserver = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('line-drawn');
+          lineObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.05 }
+  );
+  document.querySelectorAll('.hairline').forEach(el => lineObserver.observe(el));
+
+  // 4. Subtle Magnetic Pull on Pill Buttons (desktop only)
+  if (!prefersReduced && window.matchMedia('(pointer: fine)').matches) {
+    document.querySelectorAll('.magnetic').forEach(btn => {
+      btn.addEventListener('mousemove', e => {
+        const r = btn.getBoundingClientRect();
+        const dx = ((e.clientX - r.left) / r.width - 0.5) * 8;
+        const dy = ((e.clientY - r.top) / r.height - 0.5) * 6;
+        btn.style.transform = `translate3d(${dx.toFixed(1)}px, ${dy.toFixed(1)}px, 0)`;
+      });
+      btn.addEventListener('mouseleave', () => {
+        btn.style.transform = 'translate3d(0, 0, 0)';
+      });
+    });
+  }
+
+  // 5. Screenshot Switcher with Sliding Tab Indicator + Smooth Crossfade
   document.querySelectorAll('[data-gallery]').forEach(gallery => {
     const img = gallery.querySelector('[data-gallery-img]');
+    const tabBar = gallery.querySelector('.tab-bar');
+    const indicator = gallery.querySelector('.tab-indicator');
     const tabs = gallery.querySelectorAll('[data-shot]');
+
+    const moveIndicator = tab => {
+      if (!indicator || !tabBar || !tab) return;
+      const barRect = tabBar.getBoundingClientRect();
+      const tabRect = tab.getBoundingClientRect();
+      indicator.style.left = `${tabRect.left - barRect.left}px`;
+      indicator.style.width = `${tabRect.width}px`;
+    };
+
+    // Position indicator initially & on resize
+    const initialActive = gallery.querySelector('.screen-tab.active');
+    requestAnimationFrame(() => moveIndicator(initialActive));
+    window.addEventListener('resize', () => {
+      moveIndicator(gallery.querySelector('.screen-tab.active'));
+    });
 
     tabs.forEach(tab => {
       tab.addEventListener('click', () => {
+        if (tab.classList.contains('active')) return;
         tabs.forEach(t => t.classList.remove('active'));
         tab.classList.add('active');
+        moveIndicator(tab);
+
         if (img) {
-          img.style.opacity = '0.2';
+          img.classList.add('swapping');
           setTimeout(() => {
             img.src = tab.dataset.shot;
             img.alt = tab.dataset.label || 'App Screenshot';
-            img.style.opacity = '1';
-          }, 120);
+            img.onload = () => img.classList.remove('swapping');
+            setTimeout(() => img.classList.remove('swapping'), 160);
+          }, 150);
         }
       });
     });
   });
 
-  // 4. Clean Day-Order Schedule Switcher
+  // 6. Clean Day-Order Switcher with Staggered Row Entrance
   const schedules = [
     { day: 'Day Order 1', classes: ['09:00  Data Structures', '10:00  Java Programming', '11:15  DBMS Lab', '13:30  Discrete Math'] },
     { day: 'Day Order 2', classes: ['09:00  Operating Systems', '10:00  Python & AI Lab', '11:15  Computer Networks', '13:30  Web Tech'] },
@@ -82,7 +152,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const item = schedules[idx];
     dayTitle.textContent = item.day;
     dayList.innerHTML = item.classes
-      .map(c => `<div class="py-2.5 border-b border-zinc-800/90 text-xs text-zinc-300 font-mono-label">${c}</div>`)
+      .map(
+        (c, i) =>
+          `<div class="day-row py-2.5 border-b border-zinc-800/90 text-xs text-zinc-300 font-mono-label" style="animation-delay:${i * 55}ms">${c}</div>`
+      )
       .join('');
   };
   if (dayBtn) {
@@ -93,7 +166,27 @@ document.addEventListener('DOMContentLoaded', () => {
     renderDay();
   }
 
-  // 5. Fullscreen Lightbox
+  // 7. Live Chennai (IST) Clock
+  const istClock = document.getElementById('istClock');
+  const updateClock = () => {
+    if (!istClock) return;
+    try {
+      const now = new Date();
+      const ist = now.toLocaleTimeString('en-IN', {
+        timeZone: 'Asia/Kolkata',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: true
+      });
+      istClock.textContent = `The New College · ${ist} IST`;
+    } catch {
+      istClock.textContent = 'The New College · IST (UTC+5:30)';
+    }
+  };
+  updateClock();
+  setInterval(updateClock, 30000);
+
+  // 8. Fullscreen Lightbox
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightboxImg');
   const lightboxClose = document.getElementById('lightboxClose');
@@ -113,13 +206,13 @@ document.addEventListener('DOMContentLoaded', () => {
   if (lightbox) lightbox.addEventListener('click', e => { if (e.target === lightbox) closeBox(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeBox(); });
 
-  // 6. Toast + Copy Email
+  // 9. Toast + Copy Email
   const toast = document.getElementById('toast');
   const showToast = msg => {
     if (!toast) return;
     toast.textContent = msg;
     toast.classList.add('show');
-    setTimeout(() => toast.classList.remove('show'), 2500);
+    setTimeout(() => toast.classList.remove('show'), 2400);
   };
 
   document.querySelectorAll('[data-copy-email]').forEach(btn => {
@@ -133,7 +226,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 7. Contact Form -> Mailto
+  // 10. Contact Form -> Mailto
   const form = document.getElementById('contactForm');
   if (form) {
     form.addEventListener('submit', e => {
@@ -148,7 +241,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 8. Mobile Menu
+  // 11. Mobile Menu
   const menuBtn = document.getElementById('mobileMenuBtn');
   const mobileMenu = document.getElementById('mobileMenu');
   if (menuBtn && mobileMenu) {
