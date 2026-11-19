@@ -24,6 +24,7 @@
 
       <nav class="hidden sm:flex items-center gap-8" aria-label="Primary navigation">
         <a href="#apps" data-section="apps" class="nav-link">Apps</a>
+        <a href="#services" data-section="services" class="nav-link">Commissions</a>
         <a href="#founders" data-section="founders" class="nav-link">Founders</a>
         <a href="#contact" data-section="contact" class="nav-link">Contact</a>
       </nav>
@@ -35,6 +36,7 @@
 
     <div id="mobileMenu" class="hidden sm:hidden border-t border-zinc-800/80 bg-[#09090b] px-6 py-4 space-y-3 text-sm">
       <a href="#apps" class="block text-zinc-300 hover:text-white">Apps</a>
+      <a href="#services" class="block text-zinc-300 hover:text-white">Commissions</a>
       <a href="#founders" class="block text-zinc-300 hover:text-white">Founders</a>
       <a href="#contact" class="block text-zinc-300 hover:text-white">Contact</a>
     </div>
@@ -187,31 +189,46 @@
             <h3 class="text-2xl sm:text-3xl font-medium tracking-tight text-zinc-100">
               The New College Day-Order App
             </h3>
-            <p class="text-sm text-zinc-500 mt-1">Academic Schedule Tracker — Chennai</p>
+            <p class="text-sm text-zinc-500 mt-1">BCA Department Academic Schedule — Chennai</p>
           </div>
 
           <p class="text-sm sm:text-base text-zinc-400 leading-relaxed max-w-lg">
-            Built specifically for students at The New College, Chennai. Tracks rotating daily academic day orders and class schedules offline, refined across three iterations based on everyday campus use.
+            Built specifically for the Department of Computer Applications (BCA) at The New College, Chennai. Tracks live D1–D6 day orders, class timetables across all sections, substitute alerts, staff views, and internal exam schedules.
           </p>
 
+          <ul class="space-y-1 text-sm text-zinc-300 border-t border-zinc-800/70 pt-4">
+            <li class="spec-row flex items-baseline justify-between gap-4">
+              <span class="text-zinc-500 font-mono-label text-xs">TIMETABLE</span>
+              <span class="text-right">D1–D6 selector across I, II &amp; III BCA (A/B/C)</span>
+            </li>
+            <li class="spec-row flex items-baseline justify-between gap-4">
+              <span class="text-zinc-500 font-mono-label text-xs">VIEWS</span>
+              <span class="text-right">Table, My Class, Staff, Internals &amp; Replace tabs</span>
+            </li>
+            <li class="spec-row flex items-baseline justify-between gap-4">
+              <span class="text-zinc-500 font-mono-label text-xs">UPDATES</span>
+              <span class="text-right">Live today badge &amp; substitute class tracking</span>
+            </li>
+          </ul>
+
           <div class="font-mono-label text-xs text-zinc-500 pt-2">
-            Android Studio · Kotlin · Offline-First Schedule · v3
+            Android Studio · Kotlin · Jetpack Compose · v3
           </div>
         </div>
 
-        <div class="md:col-span-5">
+        <div class="md:col-span-5" data-gallery>
           <div class="device-parallax">
             <div class="device-shell">
-              <div class="device-screen !cursor-default p-5 flex flex-col justify-between bg-[#0e0e11]">
-                <div>
-                  <div class="font-mono-label text-[10px] uppercase tracking-widest text-zinc-500 mb-1">The New College</div>
-                  <div id="dayOrderTitle" class="text-xl font-medium text-zinc-100 mb-5">Day Order 1</div>
-                  <div id="dayOrderSlots"></div>
-                </div>
-                <button id="nextDayOrderBtn" type="button" class="mt-4 w-full py-2.5 rounded-full bg-zinc-100 text-zinc-950 text-xs font-medium hover:bg-zinc-200 transition-colors cursor-pointer">
-                  Next day order →
-                </button>
+              <div class="device-screen" data-zoomable title="Click to view full screen">
+                <img data-gallery-img src="assets/dayorder-splash.jpg" alt="Day-Order App Splash Screen" />
               </div>
+            </div>
+          </div>
+          <div class="flex justify-center mt-5">
+            <div class="tab-bar inline-flex items-center gap-5">
+              <button type="button" class="screen-tab active" data-shot="assets/dayorder-splash.jpg" data-label="Day-Order App Splash Screen">Splash</button>
+              <button type="button" class="screen-tab" data-shot="assets/dayorder-timetable.jpg" data-label="Day-Order App Timetable">Timetable</button>
+              <span class="tab-indicator" aria-hidden="true"></span>
             </div>
           </div>
         </div>
@@ -221,6 +238,53 @@
       <div data-reveal class="hairline pt-10 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-zinc-500">
         <span>Also at GND Studios: Godot 3D/HD-2D games, custom shaders, and Roblox Studio AI plugins.</span>
         <span class="font-mono-label">St. Joseph's College Hackathon Winners</span>
+      </div>
+    </section>
+
+    <!-- COMMISSIONS / CUSTOM APP DEVELOPMENT -->
+    <section id="services" class="hairline py-20 sm:py-28">
+      <div data-reveal class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4 mb-12">
+        <div>
+          <div class="font-mono-label text-xs text-zinc-500 mb-3">COMMISSIONS</div>
+          <h2 class="text-2xl sm:text-3xl font-medium tracking-tight text-zinc-100">
+            Custom apps, built on commission.
+          </h2>
+        </div>
+        <span class="font-mono-label text-xs text-zinc-500">AVAILABLE FOR PAID PROJECTS</span>
+      </div>
+
+      <p data-reveal data-delay="70" class="text-sm sm:text-base text-zinc-400 max-w-2xl leading-relaxed mb-14">
+        We build custom native Android apps, AI-powered utilities, and campus or business tools for clients. Because we operate lean without agency overhead, we deliver higher engineering craft and cleaner design at significantly lower pricing than competing studios.
+      </p>
+
+      <div class="grid md:grid-cols-3 gap-10 mb-12">
+        <div data-reveal data-delay="0" class="border-t border-zinc-800 pt-6">
+          <div class="font-mono-label text-xs text-zinc-500 mb-2">01 / VALUE</div>
+          <h3 class="text-base font-medium text-zinc-100 mb-2">Better quality, lower cost</h3>
+          <p class="text-sm text-zinc-400 leading-relaxed">
+            No bloated agency markups. You work directly with the developers shipping your product — getting native Kotlin &amp; Compose performance for less than competitors charge for generic templates.
+          </p>
+        </div>
+
+        <div data-reveal data-delay="80" class="border-t border-zinc-800 pt-6">
+          <div class="font-mono-label text-xs text-zinc-500 mb-2">02 / DELIVERY</div>
+          <h3 class="text-base font-medium text-zinc-100 mb-2">Transparent milestone pricing</h3>
+          <p class="text-sm text-zinc-400 leading-relaxed">
+            Clear scope from day one with structured milestone payments. We handle UI design, Android engineering, Firebase/API backends, AI integrations, and release-ready APK/AAB builds.
+          </p>
+        </div>
+
+        <div data-reveal data-delay="160" class="border-t border-zinc-800 pt-6">
+          <div class="font-mono-label text-xs text-zinc-500 mb-2">03 / CRAFT</div>
+          <h3 class="text-base font-medium text-zinc-100 mb-2">Fast, testable iterations</h3>
+          <p class="text-sm text-zinc-400 leading-relaxed">
+            Receive real working builds on your phone early in the cycle so you can test, refine, and launch with confidence.
+          </p>
+        </div>
+      </div>
+
+      <div data-reveal data-delay="200">
+        <a href="#contact" class="btn-outline magnetic">Request a project quote →</a>
       </div>
     </section>
 
@@ -292,7 +356,7 @@
               Start a conversation.
             </h2>
             <p class="text-sm text-zinc-400 max-w-sm">
-              Open to app collaborations, internships, and product feedback.
+              Available for commissioned Android apps, custom software, internships, and product collaborations.
             </p>
           </div>
 

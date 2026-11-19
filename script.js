@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const siteNav = document.getElementById('siteNav');
   const navLinks = document.querySelectorAll('.nav-link[data-section]');
   const parallaxDevices = document.querySelectorAll('.device-parallax');
-  const sections = ['apps', 'founders', 'contact']
+  const sections = ['apps', 'services', 'founders', 'contact']
     .map(id => document.getElementById(id))
     .filter(Boolean);
 
