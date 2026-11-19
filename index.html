@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GND Studios — Native Android Apps, AI Tools & Interactive Worlds</title>
+  <meta name="description" content="GND Studios is an indie software and app studio based in Chennai, India. Creators of Pulse, CancelIt, and The New College Day-Order App." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            obsidian: '#0b0d13',
+            surface: '#11131a',
+            card: '#1b1e28',
+            emeraldBrand: '#4edea3',
+            indigoBrand: '#818cf8'
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Scroll Progress Indicator -->
+  <div id="scrollProgress" class="scroll-progress" aria-hidden="true"></div>
+
+  <!-- Ambient Animated Background -->
+  <div class="bg-canvas" aria-hidden="true">
+    <div class="bg-grid"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <!-- Sticky Glass Navbar -->
+  <header id="navbar" class="navbar">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between">
+      <a href="#home" class="flex items-center gap-3 group">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-400 to-indigo-500 p-[1.5px] shadow-lg shadow-emerald-500/20">
+          <div class="w-full h-full rounded-[10px] bg-[#0d1018] flex items-center justify-center font-display font-bold text-sm text-emerald-300 tracking-tight">
+            GND
+          </div>
+        </div>
+        <div>
+          <div class="font-display font-bold text-white text-base leading-none group-hover:text-emerald-300 transition-colors">
+            GND Studios
+          </div>
+          <div class="text-[11px] text-slate-400 leading-tight mt-0.5">Chennai • App &amp; Game Studio</div>
+        </div>
+      </a>
+
+      <!-- Desktop Tabs -->
+      <nav class="hidden md:flex items-center gap-1 p-1 rounded-full bg-white/[0.04] border border-white/10" aria-label="Primary navigation">
+        <a href="#home" data-section="home" class="nav-pill active px-4 py-1.5 rounded-full text-sm">Home</a>
+        <a href="#apps" data-section="apps" class="nav-pill px-4 py-1.5 rounded-full text-sm">Apps</a>
+        <a href="#founders" data-section="founders" class="nav-pill px-4 py-1.5 rounded-full text-sm">Founders</a>
+        <a href="#studio" data-section="studio" class="nav-pill px-4 py-1.5 rounded-full text-sm">Studio</a>
+        <a href="#contact" data-section="contact" class="nav-pill px-4 py-1.5 rounded-full text-sm">Contact</a>
+      </nav>
+
+      <div class="hidden md:flex items-center gap-3">
+        <a href="#contact" class="btn-primary !py-2 !px-4 !text-xs">
+          <span class="material-symbols-outlined text-[16px]">mail</span>
+          Work With Us
+        </a>
+      </div>
+
+      <!-- Mobile Menu Toggle -->
+      <button id="mobileMenuBtn" class="md:hidden p-2 rounded-xl bg-white/5 border border-white/10 text-slate-200" aria-label="Toggle Menu">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+    </div>
+
+    <!-- Mobile Dropdown -->
+    <div id="mobileMenu" class="hidden md:hidden border-t border-white/10 bg-[#0d1018]/95 backdrop-blur-xl px-6 py-4 space-y-2">
+      <a href="#home" class="block py-2 text-sm text-slate-200 hover:text-emerald-300">Home</a>
+      <a href="#apps" class="block py-2 text-sm text-slate-200 hover:text-emerald-300">Apps</a>
+      <a href="#founders" class="block py-2 text-sm text-slate-200 hover:text-emerald-300">Founders</a>
+      <a href="#studio" class="block py-2 text-sm text-slate-200 hover:text-emerald-300">Studio</a>
+      <a href="#contact" class="block py-2 text-sm text-emerald-300 font-semibold">Contact (gndstudious@gmail.com)</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section id="home" class="relative pt-16 pb-20 sm:pt-24 sm:pb-28">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8">
+        <div class="max-w-4xl mx-auto text-center">
+          <div data-reveal class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-400/25 text-emerald-300 text-xs font-semibold tracking-wide uppercase mb-7">
+            <span class="live-dot"></span>
+            Indie Software &amp; App Studio • Chennai, Tamil Nadu, India
+          </div>
+
+          <h1 data-reveal data-delay="80" class="font-display text-4xl sm:text-6xl lg:text-7xl font-bold leading-[1.06] tracking-tight mb-6">
+            We Build <span class="gradient-text">Fast, Practical Apps</span> That Solve Real Problems.
+          </h1>
+
+          <p data-reveal data-delay="160" class="text-slate-300/90 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed mb-10">
+            <strong class="text-white">GND Studios</strong> crafts native Kotlin &amp; Jetpack Compose Android applications, privacy-first on-device AI tools, and interactive 3D/2D worlds — engineered from the ground up for speed, clarity, and everyday impact.
+          </p>
+
+          <div data-reveal data-delay="220" class="flex flex-wrap items-center justify-center gap-4 mb-16">
+            <a href="#apps" class="btn-primary">
+              <span class="material-symbols-outlined text-[18px]">apps</span>
+              Explore Flagship Apps
+            </a>
+            <a href="#founders" class="btn-secondary">
+              <span class="material-symbols-outlined text-[18px]">groups</span>
+              Meet the Founders
+            </a>
+          </div>
+        </div>
+
+        <!-- Animated Metrics Strip -->
+        <div data-reveal data-delay="280" class="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
+          <div class="glass-card p-5 text-center">
+            <div class="font-display text-3xl sm:text-4xl font-bold text-white" data-count="3" data-suffix="+">0</div>
+            <div class="text-xs text-slate-400 mt-1">Flagship Android Apps</div>
+          </div>
+          <div class="glass-card p-5 text-center">
+            <div class="font-display text-3xl sm:text-4xl font-bold text-emerald-300" data-count="160" data-suffix="+">0</div>
+            <div class="text-xs text-slate-400 mt-1">Skills Parsed On-Device</div>
+          </div>
+          <div class="glass-card p-5 text-center">
+            <div class="font-display text-3xl sm:text-4xl font-bold text-indigo-300" data-count="7" data-suffix="+">0</div>
+            <div class="text-xs text-slate-400 mt-1">Live Opportunity Portals</div>
+          </div>
+          <div class="glass-card p-5 text-center">
+            <div class="font-display text-3xl sm:text-4xl font-bold text-white" data-count="100" data-suffix="%">0</div>
+            <div class="text-xs text-slate-400 mt-1">Native Kotlin &amp; Compose</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tech Stack Marquee -->
+      <div class="mt-16 border-y border-white/[0.06] bg-white/[0.015] py-4">
+        <div class="marquee-wrap">
+          <div class="marquee-track text-xs font-semibold tracking-wide text-slate-300">
+            <span class="px-4 py-2 rounded-full bg-white/[0.04] border border-white/10">Kotlin 2.2</span>
+            <span class="px-4 py-2 rounded-full bg-white/[0.04] border border-white/10">Jetpack Compose</span>
+            <span class="px-4 py-2 rounded-full bg-white/[0.04] border border-white/10">Material 3</span>
+            <span class="px-4 py-2 rounded-full bg-white/[0.04] border border-white/10">Gemini API</span>
+            <span class="px-4 py-2 rounded-full bg-white/[0.04] border border-white/10">Firebase</span>
+            <span class="px-4 py-2 rounded-full bg-white/[0.04] border border-white/10">PDFBox-Android</span>
+            <span class="px-4 py-2 rounded-full bg-white/[0.04] border border-white/10">OkHttp 4 &amp; Jsoup</span>
+            <span class="px-4 py-2 rounded-full bg-white/[0.04] border border-white/10">Android Accessibility Service</span>
+            <span class="px-4 py-2 rounded-full bg-white/[0.04] border border-white/10">Godot Engine &amp; 3D Shaders</span>
+            <span class="px-4 py-2 rounded-full bg-white/[0.04] border border-white/10">Python &amp; OpenCV</span>
+            <span class="px-4 py-2 rounded-full bg-white/[0.04] border border-white/10">Roblox Studio Plugins</span>
+            <!-- Duplicate for seamless loop -->
+            <span class="px-4 py-2 rounded-full bg-white/[0.04] border border-white/10">Kotlin 2.2</span>
+            <span class="px-4 py-2 rounded-full bg-white/[0.04] border border-white/10">Jetpack Compose</span>
+            <span class="px-4 py-2 rounded-full bg-white/[0.04] border border-white/10">Material 3</span>
+            <span class="px-4 py-2 rounded-full bg-white/[0.04] border border-white/10">Gemini API</span>
+            <span class="px-4 py-2 rounded-full bg-white/[0.04] border border-white/10">Firebase</span>
+            <span class="px-4 py-2 rounded-full bg-white/[0.04] border border-white/10">PDFBox-Android</span>
+            <span class="px-4 py-2 rounded-full bg-white/[0.04] border border-white/10">OkHttp 4 &amp; Jsoup</span>
+            <span class="px-4 py-2 rounded-full bg-white/[0.04] border border-white/10">Android Accessibility Service</span>
+            <span class="px-4 py-2 rounded-full bg-white/[0.04] border border-white/10">Godot Engine &amp; 3D Shaders</span>
+            <span class="px-4 py-2 rounded-full bg-white/[0.04] border border-white/10">Python &amp; OpenCV</span>
+            <span class="px-4 py-2 rounded-full bg-white/[0.04] border border-white/10">Roblox Studio Plugins</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FLAGSHIP APPS SECTION -->
+    <section id="apps" class="py-20 sm:py-28">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+          <div data-reveal>
+            <div class="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-400 mb-3">Flagship Products</div>
+            <h2 class="font-display text-3xl sm:text-5xl font-bold text-white">Our 3 Core Applications</h2>
+          </div>
+          <p data-reveal data-delay="100" class="text-slate-400 max-w-md text-sm sm:text-base">
+            Interactive previews of our native Android apps. Tap any screen pill to explore real app views, or click a phone screen to zoom.
+          </p>
+        </div>
+
+        <div class="space-y-12">
+          <!-- APP 1: PULSE -->
+          <article data-reveal class="glass-card p-6 sm:p-10">
+            <div class="grid lg:grid-cols-12 gap-10 items-center">
+              <div class="lg:col-span-7 space-y-6">
+                <div class="flex flex-wrap items-center gap-3">
+                  <span class="px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-400/30 text-emerald-300 text-xs font-semibold">
+                    01 • FLAGSHIP APP
+                  </span>
+                  <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300 text-xs">
+                    Android 8.0+ • Native Kotlin
+                  </span>
+                </div>
+
+                <div>
+                  <h3 class="font-display text-3xl sm:text-4xl font-bold text-white">Pulse — Live Opportunity Radar</h3>
+                  <p class="text-emerald-300/90 text-sm font-medium mt-1">Swipe Discovery • On-Device PDF Resume Parser • AI Career Assistant</p>
+                </div>
+
+                <p class="text-slate-300 leading-relaxed text-sm sm:text-base">
+                  A native Android app that aggregates live <strong class="text-white">Jobs, Internships, Hackathons, and Workshops</strong> from across the web, parses PDF resumes 100% on-device for total privacy, and matches candidates using a physics-driven swipe deck and offline readiness engine.
+                </p>
+
+                <div class="grid sm:grid-cols-2 gap-3.5 text-sm">
+                  <div class="p-3.5 rounded-2xl bg-white/[0.03] border border-white/[0.07]">
+                    <div class="flex items-center gap-2 font-semibold text-white mb-1">
+                      <span class="material-symbols-outlined text-emerald-400 text-[18px]">bolt</span>
+                      Live Multi-Portal Scraper
+                    </div>
+                    <p class="text-xs text-slate-400">Real-time listings from Unstop, Devpost, MLH, Internshala, Remotive, Arbeitnow &amp; Govt portals.</p>
+                  </div>
+                  <div class="p-3.5 rounded-2xl bg-white/[0.03] border border-white/[0.07]">
+                    <div class="flex items-center gap-2 font-semibold text-white mb-1">
+                      <span class="material-symbols-outlined text-emerald-400 text-[18px]">lock</span>
+                      On-Device PDF Parser
+                    </div>
+                    <p class="text-xs text-slate-400">Extracts 160+ technical skills &amp; experience locally using PDFBox-Android — zero cloud uploads.</p>
+                  </div>
+                  <div class="p-3.5 rounded-2xl bg-white/[0.03] border border-white/[0.07]">
+                    <div class="flex items-center gap-2 font-semibold text-white mb-1">
+                      <span class="material-symbols-outlined text-emerald-400 text-[18px]">swipe</span>
+                      Physics-Driven Swipe Deck
+                    </div>
+                    <p class="text-xs text-slate-400">Swipe right to save, left to pass, up to priority-star, with instant undo &amp; match scoring.</p>
+                  </div>
+                  <div class="p-3.5 rounded-2xl bg-white/[0.03] border border-white/[0.07]">
+                    <div class="flex items-center gap-2 font-semibold text-white mb-1">
+                      <span class="material-symbols-outlined text-emerald-400 text-[18px]">auto_awesome</span>
+                      AI Assistant &amp; CV Builder
+                    </div>
+                    <p class="text-xs text-slate-400">Readiness score, skill-gap tips, on-device PDF CV exporter, and full application tracker.</p>
+                  </div>
+                </div>
+
+                <div class="flex flex-wrap gap-2 pt-1">
+                  <span class="px-3 py-1 rounded-lg bg-indigo-500/15 border border-indigo-400/25 text-indigo-200 text-xs font-medium">Kotlin 2.2</span>
+                  <span class="px-3 py-1 rounded-lg bg-indigo-500/15 border border-indigo-400/25 text-indigo-200 text-xs font-medium">Jetpack Compose</span>
+                  <span class="px-3 py-1 rounded-lg bg-indigo-500/15 border border-indigo-400/25 text-indigo-200 text-xs font-medium">Material 3</span>
+                  <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-slate-300 text-xs">OkHttp 4 &amp; Jsoup</span>
+                  <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-slate-300 text-xs">PDFBox-Android</span>
+                  <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-slate-300 text-xs">Coroutines / StateFlow</span>
+                </div>
+              </div>
+
+              <!-- Interactive Pulse Phone Mockup -->
+              <div class="lg:col-span-5 phone-stage" data-gallery>
+                <div class="phone-frame">
+                  <div class="phone-notch"></div>
+                  <div class="phone-screen" data-zoomable title="Click to enlarge screenshot">
+                    <img data-gallery-img src="assets/pulse-discover.jpg" alt="Pulse Discover Feed" />
+                  </div>
+                </div>
+                <div data-gallery-caption class="text-center text-xs text-slate-400 mt-3">Live Discover Feed (157+ live opportunities)</div>
+                <div class="flex flex-wrap justify-center gap-2 mt-3">
+                  <button type="button" class="shot-pill active" data-shot="assets/pulse-discover.jpg" data-label="Live Discover Feed (157+ live opportunities)">Discover</button>
+                  <button type="button" class="shot-pill" data-shot="assets/pulse-assistant.jpg" data-label="AI Career Assistant &amp; Skill Gap Analyzer">Assistant</button>
+                  <button type="button" class="shot-pill" data-shot="assets/pulse-splash.jpg" data-label="Pulse Live Sync Launch Screen">Splash</button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- APP 2: CANCELIT -->
+          <article data-reveal class="glass-card p-6 sm:p-10">
+            <div class="grid lg:grid-cols-12 gap-10 items-center">
+              <!-- Interactive CancelIt Phone Mockup -->
+              <div class="lg:col-span-5 order-2 lg:order-1 phone-stage" data-gallery>
+                <div class="phone-frame">
+                  <div class="phone-notch"></div>
+                  <div class="phone-screen" data-zoomable title="Click to enlarge screenshot">
+                    <img data-gallery-img src="assets/cancelit-focus.jpg" alt="CancelIt Focus Timer" />
+                  </div>
+                </div>
+                <div data-gallery-caption class="text-center text-xs text-slate-400 mt-3">Focus Timer &amp; Automatic App Lock Rules</div>
+                <div class="flex flex-wrap justify-center gap-2 mt-3">
+                  <button type="button" class="shot-pill active" data-shot="assets/cancelit-focus.jpg" data-label="Focus Timer &amp; Automatic App Lock Rules">Focus</button>
+                  <button type="button" class="shot-pill" data-shot="assets/cancelit-blocklist.jpg" data-label="App &amp; Regex Keyword Blocklist">Blocklist</button>
+                  <button type="button" class="shot-pill" data-shot="assets/cancelit-study.jpg" data-label="Gemini AI Study Mode &amp; Topic Checks">Study Mode</button>
+                  <button type="button" class="shot-pill" data-shot="assets/cancelit-coach.jpg" data-label="AI Habit &amp; Urge Coach">AI Coach</button>
+                  <button type="button" class="shot-pill" data-shot="assets/cancelit-splash.jpg" data-label="CancelIt — Take Back Your Attention">Splash</button>
+                </div>
+              </div>
+
+              <div class="lg:col-span-7 order-1 lg:order-2 space-y-6">
+                <div class="flex flex-wrap items-center gap-3">
+                  <span class="px-3 py-1 rounded-full bg-indigo-500/15 border border-indigo-400/30 text-indigo-300 text-xs font-semibold">
+                    02 • DIGITAL WELLNESS
+                  </span>
+                  <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300 text-xs">
+                    Android • AI + Regex Engine
+                  </span>
+                </div>
+
+                <div>
+                  <h3 class="font-display text-3xl sm:text-4xl font-bold text-white">CancelIt — Take Back Your Attention</h3>
+                  <p class="text-indigo-300/90 text-sm font-medium mt-1">App &amp; Keyword Blocker • AI Study Mode • Habit Coach</p>
+                </div>
+
+                <p class="text-slate-300 leading-relaxed text-sm sm:text-base">
+                  Built at <strong class="text-white">GND Studios</strong>, CancelIt goes beyond basic app timers by combining Android Accessibility controls, advanced regex keyword blocking, Gemini-powered study topic verification, and a personal AI habit coach inside a distraction-free OLED dark interface.
+                </p>
+
+                <div class="grid sm:grid-cols-2 gap-3.5 text-sm">
+                  <div class="p-3.5 rounded-2xl bg-white/[0.03] border border-white/[0.07]">
+                    <div class="flex items-center gap-2 font-semibold text-white mb-1">
+                      <span class="material-symbols-outlined text-indigo-400 text-[18px]">shield</span>
+                      Smart App &amp; Regex Blocking
+                    </div>
+                    <p class="text-xs text-slate-400">Enforce per-app time limits, automatic cooldown locks, and custom blacklisted keyword filters.</p>
+                  </div>
+                  <div class="p-3.5 rounded-2xl bg-white/[0.03] border border-white/[0.07]">
+                    <div class="flex items-center gap-2 font-semibold text-white mb-1">
+                      <span class="material-symbols-outlined text-indigo-400 text-[18px]">school</span>
+                      AI Study Mode
+                    </div>
+                    <p class="text-xs text-slate-400">Periodic Gemini API topic checks &amp; 10-minute focus check-ins close drifting apps automatically.</p>
+                  </div>
+                  <div class="p-3.5 rounded-2xl bg-white/[0.03] border border-white/[0.07]">
+                    <div class="flex items-center gap-2 font-semibold text-white mb-1">
+                      <span class="material-symbols-outlined text-indigo-400 text-[18px]">psychology</span>
+                      Integrated AI Habit Coach
+                    </div>
+                    <p class="text-xs text-slate-400">Reads your local usage report to help you beat urges and review weekly digital wellness trends.</p>
+                  </div>
+                  <div class="p-3.5 rounded-2xl bg-white/[0.03] border border-white/[0.07]">
+                    <div class="flex items-center gap-2 font-semibold text-white mb-1">
+                      <span class="material-symbols-outlined text-indigo-400 text-[18px]">pin</span>
+                      PIN Lock &amp; Local Reports
+                    </div>
+                    <p class="text-xs text-slate-400">Protect your rules from impulsive overrides while keeping habit analytics private on-device.</p>
+                  </div>
+                </div>
+
+                <div class="flex flex-wrap gap-2 pt-1">
+                  <span class="px-3 py-1 rounded-lg bg-emerald-500/15 border border-emerald-400/25 text-emerald-200 text-xs font-medium">Kotlin</span>
+                  <span class="px-3 py-1 rounded-lg bg-emerald-500/15 border border-emerald-400/25 text-emerald-200 text-xs font-medium">Jetpack Compose</span>
+                  <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-slate-300 text-xs">Accessibility Service</span>
+                  <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-slate-300 text-xs">Advanced Regex</span>
+                  <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-slate-300 text-xs">Firebase</span>
+                  <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-slate-300 text-xs">Gemini API</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- APP 3: THE NEW COLLEGE DAY-ORDER APP (v3) -->
+          <article data-reveal class="glass-card p-6 sm:p-10">
+            <div class="grid lg:grid-cols-12 gap-10 items-center">
+              <div class="lg:col-span-7 space-y-6">
+                <div class="flex flex-wrap items-center gap-3">
+                  <span class="px-3 py-1 rounded-full bg-amber-500/15 border border-amber-400/30 text-amber-300 text-xs font-semibold">
+                    03 • CAMPUS UTILITY
+                  </span>
+                  <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300 text-xs">
+                    Version 3 • The New College, Chennai
+                  </span>
+                </div>
+
+                <div>
+                  <h3 class="font-display text-3xl sm:text-4xl font-bold text-white">The New College Day-Order App (v3)</h3>
+                  <p class="text-amber-300/90 text-sm font-medium mt-1">Daily Academic Day-Order &amp; Class Schedule Companion</p>
+                </div>
+
+                <p class="text-slate-300 leading-relaxed text-sm sm:text-base">
+                  Purpose-built for students of <strong class="text-white">The New College, Chennai</strong>, the Day-Order App eliminates daily confusion around rotating academic day orders, lab periods, and timetable changes — delivering instant schedule clarity in a fast, lightweight Android experience.
+                </p>
+
+                <div class="grid sm:grid-cols-2 gap-3.5 text-sm">
+                  <div class="p-3.5 rounded-2xl bg-white/[0.03] border border-white/[0.07]">
+                    <div class="flex items-center gap-2 font-semibold text-white mb-1">
+                      <span class="material-symbols-outlined text-amber-300 text-[18px]">calendar_today</span>
+                      Instant Day-Order Lookup
+                    </div>
+                    <p class="text-xs text-slate-400">Always know today's exact academic day order without digging through PDFs or group chats.</p>
+                  </div>
+                  <div class="p-3.5 rounded-2xl bg-white/[0.03] border border-white/[0.07]">
+                    <div class="flex items-center gap-2 font-semibold text-white mb-1">
+                      <span class="material-symbols-outlined text-amber-300 text-[18px]">schedule</span>
+                      Clean Timetable Flow
+                    </div>
+                    <p class="text-xs text-slate-400">Iterated through 3 versions with student feedback for fast startup and offline reliability.</p>
+                  </div>
+                </div>
+
+                <div class="flex flex-wrap gap-2 pt-1">
+                  <span class="px-3 py-1 rounded-lg bg-amber-500/15 border border-amber-400/25 text-amber-200 text-xs font-medium">Android Studio</span>
+                  <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-slate-300 text-xs">Kotlin / Jetpack Compose</span>
+                  <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-slate-300 text-xs">Offline-First Schedule</span>
+                  <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-slate-300 text-xs">AI-Assisted Workflows</span>
+                </div>
+              </div>
+
+              <!-- Interactive Day-Order App Mini Simulator -->
+              <div class="lg:col-span-5 phone-stage">
+                <div class="phone-frame">
+                  <div class="phone-notch"></div>
+                  <div class="phone-screen !cursor-default p-4 pt-9 flex flex-col justify-between bg-gradient-to-b from-[#131926] to-[#0a0d14]">
+                    <div>
+                      <div class="flex items-center justify-between mb-4">
+                        <div>
+                          <div class="text-[10px] uppercase tracking-widest text-emerald-400 font-semibold">The New College</div>
+                          <div id="dayOrderTitle" class="font-display text-xl font-bold text-white">Day Order 1</div>
+                        </div>
+                        <span class="px-2.5 py-1 rounded-lg bg-emerald-500/15 border border-emerald-400/30 text-[10px] text-emerald-300 font-bold">v3.0</span>
+                      </div>
+                      <div id="dayOrderSlots" class="space-y-2.5"></div>
+                    </div>
+                    <button id="nextDayOrderBtn" type="button" class="mt-4 w-full py-2.5 rounded-xl bg-emerald-400 text-[#042116] font-bold text-xs hover:bg-emerald-300 transition-colors flex items-center justify-center gap-1.5">
+                      <span class="material-symbols-outlined text-[15px]">swap_horiz</span>
+                      Preview Next Day Order
+                    </button>
+                  </div>
+                </div>
+                <div class="text-center text-xs text-slate-400 mt-3">Interactive Day-Order Schedule Preview</div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOUNDERS TAB / SECTION -->
+    <section id="founders" class="py-20 sm:py-28 border-t border-white/[0.06] bg-white/[0.01]">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <div data-reveal class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-indigo-500/15 border border-indigo-400/25 text-indigo-300 text-xs font-semibold uppercase tracking-widest mb-4">
+            <span class="material-symbols-outlined text-[15px]">groups</span>
+            Founders
+          </div>
+          <h2 data-reveal data-delay="80" class="font-display text-3xl sm:text-5xl font-bold text-white mb-4">
+            Meet the Team Behind GND Studios
+          </h2>
+          <p data-reveal data-delay="140" class="text-slate-400 text-sm sm:text-base">
+            Three student builders from Chennai combining mobile engineering, game development, AI workflows, and product vision to ship real software.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+          <!-- Founder 1: Irfan Ahmed -->
+          <div data-reveal data-delay="0" class="glass-card p-7 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-6">
+                <div class="founder-avatar bg-gradient-to-br from-emerald-400/25 to-teal-500/10 border border-emerald-400/40 text-emerald-300">
+                  IA
+                </div>
+                <span class="px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-400/30 text-emerald-300 text-[11px] font-semibold">
+                  Co-Founder
+                </span>
+              </div>
+              <h3 class="font-display text-2xl font-bold text-white">Irfan Ahmed</h3>
+              <p class="text-emerald-300 text-xs font-semibold mt-1 mb-4">Android, Software &amp; Game Developer</p>
+              <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                Architect of <strong class="text-slate-200">Pulse</strong> and co-creator of <strong class="text-slate-200">CancelIt</strong> &amp; the Day-Order App. Builds native Kotlin/Compose apps, Godot 3D/2D games with custom shaders, Python utilities, and agentic Roblox Studio plugins. Hackathon Winner at St. Joseph's College.
+              </p>
+            </div>
+            <div class="space-y-4">
+              <div class="flex flex-wrap gap-1.5">
+                <span class="px-2.5 py-1 rounded-md bg-white/5 text-[11px] text-slate-300">Kotlin &amp; Compose</span>
+                <span class="px-2.5 py-1 rounded-md bg-white/5 text-[11px] text-slate-300">Godot / VFX</span>
+                <span class="px-2.5 py-1 rounded-md bg-white/5 text-[11px] text-slate-300">Python &amp; AI</span>
+              </div>
+              <div class="flex items-center gap-2.5 pt-3 border-t border-white/10">
+                <a href="https://www.linkedin.com/in/irfan-ahmed-a3b9b2438/" target="_blank" rel="noopener" class="text-xs font-semibold text-emerald-300 hover:text-emerald-200 inline-flex items-center gap-1">
+                  LinkedIn <span class="material-symbols-outlined text-[14px]">north_east</span>
+                </a>
+                <span class="text-slate-600">•</span>
+                <a href="https://github.com/broman884" target="_blank" rel="noopener" class="text-xs font-semibold text-slate-300 hover:text-white inline-flex items-center gap-1">
+                  GitHub <span class="material-symbols-outlined text-[14px]">north_east</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Founder 2: Mohammed Ibrahim -->
+          <div data-reveal data-delay="110" class="glass-card p-7 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-6">
+                <div class="founder-avatar bg-gradient-to-br from-indigo-400/25 to-blue-500/10 border border-indigo-400/40 text-indigo-300">
+                  MI
+                </div>
+                <span class="px-3 py-1 rounded-full bg-indigo-500/15 border border-indigo-400/30 text-indigo-300 text-[11px] font-semibold">
+                  Co-Founder
+                </span>
+              </div>
+              <h3 class="font-display text-2xl font-bold text-white">Mohammed Ibrahim</h3>
+              <p class="text-indigo-300 text-xs font-semibold mt-1 mb-4">Android / iOS App &amp; Game Developer</p>
+              <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                Co-developer of <strong class="text-slate-200">CancelIt</strong> and <strong class="text-slate-200">The New College Day-Order App</strong>. Specializes in shipping functional mobile apps and games using Kotlin, Jetpack Compose, and Firebase with clean UX and reliable performance.
+              </p>
+            </div>
+            <div class="space-y-4">
+              <div class="flex flex-wrap gap-1.5">
+                <span class="px-2.5 py-1 rounded-md bg-white/5 text-[11px] text-slate-300">Kotlin</span>
+                <span class="px-2.5 py-1 rounded-md bg-white/5 text-[11px] text-slate-300">Jetpack Compose</span>
+                <span class="px-2.5 py-1 rounded-md bg-white/5 text-[11px] text-slate-300">Firebase</span>
+              </div>
+              <div class="flex items-center gap-2.5 pt-3 border-t border-white/10">
+                <a href="https://www.linkedin.com/in/muhammad-ibrahim-1a3bb5382/" target="_blank" rel="noopener" class="text-xs font-semibold text-indigo-300 hover:text-indigo-200 inline-flex items-center gap-1">
+                  LinkedIn <span class="material-symbols-outlined text-[14px]">north_east</span>
+                </a>
+                <span class="text-slate-600">•</span>
+                <a href="https://github.com/HyYokudev" target="_blank" rel="noopener" class="text-xs font-semibold text-slate-300 hover:text-white inline-flex items-center gap-1">
+                  GitHub <span class="material-symbols-outlined text-[14px]">north_east</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Founder 3: Mohammed Momin Sufiyan -->
+          <div data-reveal data-delay="220" class="glass-card p-7 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-6">
+                <div class="founder-avatar bg-gradient-to-br from-amber-400/25 to-orange-500/10 border border-amber-400/40 text-amber-300">
+                  MS
+                </div>
+                <span class="px-3 py-1 rounded-full bg-amber-500/15 border border-amber-400/30 text-amber-300 text-[11px] font-semibold">
+                  Co-Founder
+                </span>
+              </div>
+              <h3 class="font-display text-2xl font-bold text-white">Mohammed Momin Sufiyan</h3>
+              <p class="text-amber-300 text-xs font-semibold mt-1 mb-4">Product Vision &amp; Studio Co-Founder</p>
+              <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                Co-founder of <strong class="text-slate-200">GND Studios</strong>, driving product direction, creative concepts, testing, and community feedback across our Android apps, student utilities, and interactive studio initiatives.
+              </p>
+            </div>
+            <div class="space-y-4">
+              <div class="flex flex-wrap gap-1.5">
+                <span class="px-2.5 py-1 rounded-md bg-white/5 text-[11px] text-slate-300">Product Strategy</span>
+                <span class="px-2.5 py-1 rounded-md bg-white/5 text-[11px] text-slate-300">QA &amp; UX</span>
+                <span class="px-2.5 py-1 rounded-md bg-white/5 text-[11px] text-slate-300">GND Studios</span>
+              </div>
+              <div class="flex items-center gap-2.5 pt-3 border-t border-white/10">
+                <a href="mailto:gndstudious@gmail.com" class="text-xs font-semibold text-amber-300 hover:text-amber-200 inline-flex items-center gap-1">
+                  Contact via Studio <span class="material-symbols-outlined text-[14px]">mail</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STUDIO BEYOND APPS (GAMES & CREATOR TOOLS) -->
+    <section id="studio" class="py-20 sm:py-24 border-t border-white/[0.06]">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8">
+        <div data-reveal class="mb-12">
+          <div class="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-400 mb-3">Beyond Mobile</div>
+          <h2 class="font-display text-3xl sm:text-4xl font-bold text-white">Also Crafted at GND Studios</h2>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+          <div data-reveal data-delay="0" class="glass-card p-6">
+            <div class="w-11 h-11 rounded-2xl bg-emerald-500/15 border border-emerald-400/30 flex items-center justify-center text-emerald-300 mb-4">
+              <span class="material-symbols-outlined">sports_esports</span>
+            </div>
+            <h3 class="font-display text-xl font-bold text-white mb-2">Godot 3D &amp; HD-2D Games</h3>
+            <p class="text-sm text-slate-400 leading-relaxed">
+              Interactive experiences including a 3D semi-physics Pogo Stick game with custom dynamic-lighting shaders and an Octopath-inspired HD-2D Life-Sim proof of concept.
+            </p>
+          </div>
+
+          <div data-reveal data-delay="100" class="glass-card p-6">
+            <div class="w-11 h-11 rounded-2xl bg-indigo-500/15 border border-indigo-400/30 flex items-center justify-center text-indigo-300 mb-4">
+              <span class="material-symbols-outlined">extension</span>
+            </div>
+            <h3 class="font-display text-xl font-bold text-white mb-2">Roblox Studio AI Plugins</h3>
+            <p class="text-sm text-slate-400 leading-relaxed">
+              Developer productivity suite for Roblox creators: <strong class="text-slate-200">AI Director</strong> (agentic animation tool), <strong class="text-slate-200">Tokenizer</strong> (AI token manager), and a custom <strong class="text-slate-200">Terrain Editor</strong> brush plugin.
+            </p>
+          </div>
+
+          <div data-reveal data-delay="200" class="glass-card p-6">
+            <div class="w-11 h-11 rounded-2xl bg-amber-500/15 border border-amber-400/30 flex items-center justify-center text-amber-300 mb-4">
+              <span class="material-symbols-outlined">emoji_events</span>
+            </div>
+            <h3 class="font-display text-xl font-bold text-white mb-2">Hackathon-Tested Engineering</h3>
+            <p class="text-sm text-slate-400 leading-relaxed">
+              Winners of the St. Joseph's College Hackathon and active competitors in coding challenges, building Python/OpenCV/Streamlit solvers alongside full mobile products.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT & LOCATION SECTION -->
+    <section id="contact" class="py-20 sm:py-28 border-t border-white/[0.06] bg-white/[0.015]">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8">
+        <div class="grid lg:grid-cols-12 gap-10 items-start">
+          <div data-reveal class="lg:col-span-5 space-y-6">
+            <div>
+              <div class="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-400 mb-3">Contact &amp; Location</div>
+              <h2 class="font-display text-3xl sm:text-4xl font-bold text-white mb-3">Let's Build Something Together</h2>
+              <p class="text-slate-400 text-sm sm:text-base leading-relaxed">
+                Have an Android app idea, collaboration proposal, internship opportunity, or feedback on Pulse or CancelIt? Reach out directly to GND Studios.
+              </p>
+            </div>
+
+            <div class="space-y-3.5">
+              <!-- Email Card -->
+              <div class="glass-card p-4 flex items-center justify-between gap-3">
+                <div class="flex items-center gap-3.5 min-w-0">
+                  <div class="w-10 h-10 rounded-xl bg-emerald-500/15 border border-emerald-400/30 flex items-center justify-center text-emerald-300 shrink-0">
+                    <span class="material-symbols-outlined text-[20px]">mail</span>
+                  </div>
+                  <div class="min-w-0">
+                    <div class="text-[11px] text-slate-400 uppercase tracking-wider">Studio Email</div>
+                    <a href="mailto:gndstudious@gmail.com" class="text-sm font-semibold text-white hover:text-emerald-300 transition-colors truncate block">
+                      gndstudious@gmail.com
+                    </a>
+                  </div>
+                </div>
+                <button type="button" data-copy-email class="px-3 py-1.5 rounded-lg bg-white/5 hover:bg-emerald-500/20 border border-white/10 text-xs font-semibold text-slate-200 hover:text-emerald-300 transition-colors shrink-0">
+                  Copy
+                </button>
+              </div>
+
+              <!-- Location Card -->
+              <div class="glass-card p-4 flex items-center gap-3.5">
+                <div class="w-10 h-10 rounded-xl bg-indigo-500/15 border border-indigo-400/30 flex items-center justify-center text-indigo-300 shrink-0">
+                  <span class="material-symbols-outlined text-[20px]">location_on</span>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400 uppercase tracking-wider">Location</div>
+                  <div class="text-sm font-semibold text-white">Chennai, Tamil Nadu, India</div>
+                  <div class="text-xs text-slate-400">The New College Campus • IST (UTC+5:30)</div>
+                </div>
+              </div>
+
+              <!-- Availability Card -->
+              <div class="glass-card p-4 flex items-center gap-3.5">
+                <div class="w-10 h-10 rounded-xl bg-amber-500/15 border border-amber-400/30 flex items-center justify-center text-amber-300 shrink-0">
+                  <span class="material-symbols-outlined text-[20px]">rocket_launch</span>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400 uppercase tracking-wider">Status</div>
+                  <div class="text-sm font-semibold text-white">Open for Collaborations &amp; Internships</div>
+                  <div class="text-xs text-slate-400">Android • AI Tools • Indie Game Dev</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Form -->
+          <div data-reveal data-delay="120" class="lg:col-span-7 glass-card p-6 sm:p-8">
+            <form id="contactForm" class="space-y-4">
+              <div class="grid sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="cfName" class="block text-xs font-semibold text-slate-300 mb-1.5">Your Name</label>
+                  <input id="cfName" type="text" required placeholder="Alex / Recruiter / Founder"
+                    class="w-full px-4 py-3 rounded-xl bg-[#0e1118] border border-white/10 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-400 transition-colors" />
+                </div>
+                <div>
+                  <label for="cfEmail" class="block text-xs font-semibold text-slate-300 mb-1.5">Your Email</label>
+                  <input id="cfEmail" type="email" required placeholder="you@company.com"
+                    class="w-full px-4 py-3 rounded-xl bg-[#0e1118] border border-white/10 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-400 transition-colors" />
+                </div>
+              </div>
+
+              <div>
+                <label for="cfTopic" class="block text-xs font-semibold text-slate-300 mb-1.5">Topic</label>
+                <select id="cfTopic"
+                  class="w-full px-4 py-3 rounded-xl bg-[#0e1118] border border-white/10 text-sm text-white focus:outline-none focus:border-emerald-400 transition-colors">
+                  <option value="App Collaboration">App Collaboration / Custom Build</option>
+                  <option value="Pulse Feedback">Pulse — Opportunity Radar Feedback</option>
+                  <option value="CancelIt Feedback">CancelIt — Digital Wellness Feedback</option>
+                  <option value="Internship / Hiring">Internship / Hiring Inquiry</option>
+                  <option value="General">General Studio Inquiry</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="cfMessage" class="block text-xs font-semibold text-slate-300 mb-1.5">Message</label>
+                <textarea id="cfMessage" rows="4" required placeholder="Tell us about your project, feedback, or opportunity..."
+                  class="w-full px-4 py-3 rounded-xl bg-[#0e1118] border border-white/10 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-400 transition-colors resize-none"></textarea>
+              </div>
+
+              <div class="flex flex-wrap items-center justify-between gap-4 pt-2">
+                <span class="text-xs text-slate-400">Direct inbox: <strong class="text-slate-200">gndstudious@gmail.com</strong></span>
+                <button type="submit" class="btn-primary">
+                  <span class="material-symbols-outlined text-[18px]">send</span>
+                  Send Message
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-white/[0.06] py-10">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+      <div class="flex items-center gap-2.5">
+        <span class="font-display font-bold text-white text-sm">GND Studios</span>
+        <span>•</span>
+        <span>Chennai, Tamil Nadu, India</span>
+      </div>
+      <div class="flex flex-wrap items-center gap-5">
+        <a href="#apps" class="hover:text-emerald-300 transition-colors">Apps</a>
+        <a href="#founders" class="hover:text-emerald-300 transition-colors">Founders</a>
+        <a href="mailto:gndstudious@gmail.com" class="hover:text-emerald-300 transition-colors">gndstudious@gmail.com</a>
+        <a href="https://github.com/broman884" target="_blank" rel="noopener" class="hover:text-emerald-300 transition-colors">GitHub</a>
+      </div>
+      <div>© 2026 GND Studios. Built by Irfan, Ibrahim &amp; Sufiyan.</div>
+    </div>
+  </footer>
+
+  <!-- Fullscreen Screenshot Lightbox -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot Preview">
+    <button id="lightboxClose" type="button" class="fixed top-6 right-6 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white flex items-center justify-center" aria-label="Close Preview">
+      <span class="material-symbols-outlined">close</span>
+    </button>
+    <img id="lightboxImg" src="" alt="Enlarged app screenshot" />
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
